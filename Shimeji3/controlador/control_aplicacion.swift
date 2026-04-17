@@ -18,6 +18,8 @@ public class ControladorAplicacion{
     public var gramofonos_cargados: [Entity] = []
     public var estado: EstadosAplicacion = .iniciando
     
+    private var historial_comandos: Comando = []
+    
     init(){
         Task.detached(priority: .high){
             await self.cargar_gramofonos()

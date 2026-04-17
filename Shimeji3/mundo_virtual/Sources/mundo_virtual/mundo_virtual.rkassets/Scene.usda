@@ -10,7 +10,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["animacion_1", "rotacion_infinita"]
+    reorder nameChildren = ["animacion_1", "rotacion_infinita", "saltito"]
     def "VintageGramophone" (
         active = true
         references = @VintageGramophone.usdz@
@@ -62,7 +62,10 @@ def Xform "Root"
 
     def RealityKitComponent "RCP_BehaviorsContainer"
     {
-        rel behaviors = </Root/OnAddedToScene>
+        rel behaviors = [
+            </Root/OnAddedToScene>,
+            </Root/OnNotification>,
+        ]
         uniform token info:id = "RCP.BehaviorsContainer"
     }
 
@@ -83,6 +86,100 @@ def Xform "Root"
             rel affectedObjects = </Root>
             rel animationLibraryKey = </Root/rotacion_infinita>
             rel animationLibraryKeyOverrideKey = </Root/OnAddedToScene/Trigger>
+            token info:id = "PlayTimeline"
+            int loops = 0
+            int performCount = 1
+            token type = "serial"
+        }
+    }
+
+    def RealityKitTimeline "saltito"
+    {
+        reorder nameChildren = ["Track", "Track2"]
+        def RealityKitTrack "Track"
+        {
+            reorder nameChildren = ["Transform_To", "Transform_To_1", "Notification"]
+            def RealityKitAction "Transform_To"
+            {
+                string actionKind = "moveTo"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "FDBF0594-019B-4916-BC59-CAEA399341BF"
+                float3 position = (0, 1, 0)
+                quatf rotation = (0.99999994, 0, 0, 0)
+                float3 scale = (0.19999997, 0.19999997, 0.19999997)
+                double startTime = 0.007416264587073609
+                rel target = </Root/VintageGramophone>
+
+                def RealityKitStruct "transformMode"
+                {
+                    rel referenceEntity = </Root>
+                    token type = "parent"
+                }
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_To_1"
+            {
+                string actionKind = "moveTo"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "FDBF0594-019B-4916-BC59-CAEA399341BF"
+                float3 position = (0, 0, 0)
+                quatf rotation = (0.99999994, 0, 0, 0)
+                float3 scale = (0.19999997, 0.19999997, 0.19999997)
+                double startTime = 1.007416264687074
+                rel target = </Root/VintageGramophone>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "transformMode"
+                {
+                    rel referenceEntity = </Root>
+                    token type = "parent"
+                }
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Notification"
+            {
+                string actionKind = "notification"
+                double duration = 0
+                uniform token info:id = "2799B560-F762-413E-9358-C2BB3AD15239"
+                string notificationName = "finalizacion_salto"
+                double startTime = 2
+                rel target = </Root/VintageGramophone>
+            }
+        }
+    }
+
+    def Preliminary_Behavior "OnNotification"
+    {
+        rel actions = </Root/OnNotification/Action>
+        uniform bool exclusive
+        rel triggers = </Root/OnNotification/Trigger>
+
+        def Preliminary_Trigger "Trigger"
+        {
+            rel affectedObjects = </Root>
+            string identifier = "da_un_saltito"
+            token info:id = "Notification"
+        }
+
+        def Preliminary_Action "Action"
+        {
+            rel affectedObjects = </Root>
+            rel animationLibraryKey = </Root/saltito>
+            rel animationLibraryKeyOverrideKey = </Root/OnNotification/Trigger>
             token info:id = "PlayTimeline"
             int loops = 0
             int performCount = 1

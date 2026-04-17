@@ -4,15 +4,6 @@
       [
         "5395C812-6B18-4B68-B315-AD107D9179E5",
         "Root",
-        "rotacion_infinita"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5395C812-6B18-4B68-B315-AD107D9179E5",
-        "Root",
         "animacion_1",
         "Track"
       ],
@@ -22,7 +13,8 @@
       },
       [
         "5395C812-6B18-4B68-B315-AD107D9179E5",
-        "Root"
+        "Root",
+        "saltito"
       ],
       {
         "isExpanded" : true,
@@ -40,8 +32,45 @@
       [
         "5395C812-6B18-4B68-B315-AD107D9179E5",
         "Root",
+        "saltito",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5395C812-6B18-4B68-B315-AD107D9179E5",
+        "Root",
         "rotacion_infinita",
         "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5395C812-6B18-4B68-B315-AD107D9179E5",
+        "Root",
+        "saltito",
+        "Track2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5395C812-6B18-4B68-B315-AD107D9179E5",
+        "Root",
+        "rotacion_infinita"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5395C812-6B18-4B68-B315-AD107D9179E5",
+        "Root"
       ],
       {
         "isExpanded" : true,
