@@ -18,9 +18,13 @@ public class ControladorAplicacion{
     public var gramofonos_cargados: [Entity] = []
     public var estado: EstadosAplicacion = .iniciando
     
-    private var historial_comandos: Comando = []
+    private var historial_comandos: [Comando] = []
+    
+    var estados_animacion: MaquinaEstadosGenerica = MaquinaEstadosAnimacion()
     
     init(){
+        estados_animacion.controlador_general = self as ProcesarComandos
+        
         Task.detached(priority: .high){
             await self.cargar_gramofonos()
         }

@@ -12,17 +12,14 @@ extension ControladorAplicacion{
     func activar_comportamiento(_ nombre: String){
         guard let escenario: RealityKit.Scene = raiz_escena.scene else { fatalError("La escena raíz ha fallado en cargarse. Lo siento.")}
         
-        let nombre_notificacion = Notification.Name("RealityKit.NotificationTrigger")
-        let informacion_general: [String: Any] = [
-            "RealityKit.NotificationTrigger.Scene": escenario,
-            "RealityKit.NotificationTrigger.Identifier": nombre
-        ]
+        raiz_escena.scene?.enviar_notificacion(nombre)
+        estados_animacion.actualizar(nombre)
         
-        NotificationCenter.default.post(name: nombre_notificacion, object: nil, userInfo: informacion_general)
     }
     
     func escuchar_comportamiento(_ nombre: String){
-        print("nombre de finalizacion comportamiento: \(nombre)")
+        //print("nombre de finalizacion comportamiento: \(nombre)")
+        estados_animacion.actualizar(nombre)
     }
 }
 
