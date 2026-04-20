@@ -20,10 +20,12 @@ public class ControladorAplicacion{
     
     private var historial_comandos: [Comando] = []
     
-    var estados_animacion: MaquinaEstadosGenerica = MaquinaEstadosAnimacion()
+    var maquina_de_estados: MaquinaEstadosGenerica = MaquinaEstadosAnimacion()
     
     init(){
-        estados_animacion.controlador_general = self as ProcesarComandos
+        for indice in 0..maquina_de_estados{
+            maquina_de_estados[indice].controlador_general = self as ProcesarComandos
+        }
         
         Task.detached(priority: .high){
             await self.cargar_gramofonos()
@@ -56,6 +58,12 @@ public class ControladorAplicacion{
     func alejar_gramofonos(lejitud: Float){
         for gramofono_cargado in gramofonos_cargados{
             gramofono_cargado.position.z = -lejitud
+        }
+    }
+    
+    func actualizar_estados(_ mensaje: String){
+        for maquina in maquina_de_estados{
+            maquina.actualizar(mensaje))
         }
     }
 }

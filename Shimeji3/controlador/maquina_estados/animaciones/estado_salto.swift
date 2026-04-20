@@ -18,6 +18,7 @@ class SaltoAnimacion: Estado{
         switch evento{
             default:
                 print("Estado salto.")
+            contexto?.realizar_cambio_estado(nombre_del_estado:PlanetasDesaparecidos.nombre )
         }
     }
     
